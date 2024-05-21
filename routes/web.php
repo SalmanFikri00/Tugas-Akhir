@@ -46,7 +46,19 @@ Route::middleware(['auth', 'verified' ])->group(function () {
 
         Route::post('/categories/add', [ CategoriesController::class , 'store'])->name('categories.store');
 
+        Route::get('/categories/edit/{id}', [ CategoriesController::class , 'edit'])->name('categories.edit');
+
+        Route::patch('/categories/edit/{id}', [ CategoriesController::class , 'update'])->name('categories.update');
+
+        Route::delete('/categories/{id}', [ CategoriesController::class , 'destroy'])->name('categories.destroy');
+
         Route::get('/reporting', [ TransactionController::class , 'index'])->name('reporting.index');
+
+        Route::get('/reporting/{id}' , [ TransactionController::class , 'edit']);
+
+        Route::patch('/reporting/{id}' , [ TransactionController::class , 'update']);
+
+        Route::delete('/reporting/{id} ' , [ TransactionController::class , 'destroy']);
 
     });
 

@@ -1,6 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Card, Typography } from "@material-tailwind/react";
 import { formatRupiah } from "@/Helpers";
+import { Link } from "@inertiajs/react";
 
 const TABLE_HEAD = [ "No" , "Pembeli", "Nama Barang", "Jumlah Barang" , "total harga", ""];
 
@@ -58,7 +59,7 @@ export function Reporting( { penjualan }) {
             </tr>
             </thead>
             <tbody>
-            {penjualan.data.map(({ barang , pembeli, total , jumlah }, index) => {
+            {penjualan.data.map(({ id,  barang , pembeli, total , jumlah }, index) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
@@ -109,16 +110,29 @@ export function Reporting( { penjualan }) {
                         {formatRupiah(total)}
                     </Typography>
                     </td>
-                    <td className={classes}>
-                    <Typography
-                        as="a"
-                        href="#"
-                        variant="small"
-                        color="blue-gray"
-                        className="font-medium"
-                    >
-                        Edit
-                    </Typography>
+                    <td className={classes+ ' flex gap-5'}>
+                        <Link href={"/reporting/"+id} >
+                            <Typography
+                                as="a"
+                                href="#"
+                                variant="small"
+                                color="blue-gray"
+                                className="font-medium"
+                                >
+                                Edit
+                            </Typography>
+                        </Link>
+                        <Link href={"/reporting/"+id} method="delete">
+                            <Typography
+                                as="a"
+                                href="#"
+                                variant="small"
+                                color="blue-gray"
+                                className="font-medium"
+                                >
+                                delete
+                            </Typography>
+                        </Link>
                     </td>
                 </tr>
                 );

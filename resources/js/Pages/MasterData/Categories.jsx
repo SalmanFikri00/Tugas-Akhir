@@ -66,6 +66,26 @@ const Categories = ( { datas }) => {
                         {created_at}
                     </Typography>
                     </td>
+                    <td className={classes+ ' flex gap-5'}>
+                        <Link href={'/categories/edit/' + id} >
+                            <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                                >
+                                        Edit
+                            </Typography>
+                        </Link>
+                        <Link href={'/categories/'+ id} method="delete" >
+                            <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                                >
+                                        Delete
+                            </Typography>
+                        </Link>
+                    </td>
                 </tr>
                 );
             })}

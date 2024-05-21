@@ -20,13 +20,15 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { useForm } from "@inertiajs/react";
 import { formatRupiah } from "@/Helpers";
 
-const Order = ({ item }) => {
+const EditOrder = ({ item , penjualan , barangPenjualan }) => {
   const { data, setData, post, processing, reset } = useForm({
-    barang: '',
-    jumlah: 1,
-    total: '',
-    pembeli: '',
+    barang: penjualan.barang,
+    jumlah: penjualan.jumlah,
+    total: penjualan.total,
+    pembeli: penjualan.pembeli,
   });
+
+  console.log(barangPenjualan)
 
   const submit = (e) => {
     e.preventDefault();
@@ -42,23 +44,18 @@ const Order = ({ item }) => {
   };
 
   const [type, setType] = React.useState("card");
-  const [totalHarga, setTotalHarga] = React.useState("");
-  const [barang, setBarang] = React.useState({
-    harga_jual: 0,
-    stok: 1,
-  });
+  const [totalHarga, setTotalHarga] = React.useState(penjualan.total);
+  const [barang, setBarang] = React.useState(barangPenjualan);
 
   useEffect(() => {
     reset({
-      barang: '',
-      total: '',
-      jumlah: 1,
-      pembeli: ''
+      barang: penjualan.barang,
+      total: penjualan.total,
+      jumlah: penjualan.jumlah,
+      pembeli: penjualan.pembeli
     });
-    setBarang({
-      harga_jual: 0,
-    });
-    setTotalHarga("");
+    setBarang(barangPenjualan);
+    setTotalHarga(penjualan.total);
   }, []);
 
   return (
@@ -218,4 +215,4 @@ const Order = ({ item }) => {
   );
 };
 
-export default Order;
+export default EditOrder;

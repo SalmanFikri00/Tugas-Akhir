@@ -25,7 +25,7 @@ export default function Dashboard({ auth , barang , penjualan ,kategori }) {
             <div className=' flex gap-12'>
                 <Card title='stok Items' total={stokBarang} data={ displayBarang } link='/items/' />
                 <Card title='kategori' total={kategori.length} data={ displayKategori } link='/categories/' />
-                <Card title='penjualan' total={penjualan.length} data={ displayPenjualan } link='/penjualan/' />
+                <Card title='penjualan' total={penjualan.length} data={ displayPenjualan } link='/reporting/' />
             </div>
         </AuthenticatedLayout>
     );

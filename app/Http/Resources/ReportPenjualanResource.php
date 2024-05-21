@@ -23,6 +23,7 @@ class ReportPenjualanResource extends JsonResource
             'barang' => $Barangs,
             'jumlah' => $this->jumlah,
             'total' => $this->total,
+            'id' => $this->id,
         ];
     }
 }
